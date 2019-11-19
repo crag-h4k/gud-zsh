@@ -1,0 +1,41 @@
+# Functions ##############################
+#
+# $ = pattern, $2 =  path
+function findstr() { 
+    pattern=$1
+    path=$2
+    grep -rnw '$pattern' -e '$path';
+    }
+#
+# make a dir and cd into it
+function mkcd() { 
+    dir_name=$1
+    mkdir -p '$dir_name';
+    cd '$dir_name';
+    }
+#
+# find and kill processes
+function fkill() { 
+    proc_name=$1
+    kill -9 $( pgrep '$proc_name');
+    }
+#
+#shortcut to set the proper permissions of ssh keys
+function ownssh() {
+    user_ssh='$HOME/.ssh'
+    chmod -R 700 $user_ssh
+    chmod 644 '$user_ssh/id_rsa.pub'
+    chmod 600 '$user_ssh/id_rsa'
+    chmod -R 755 $HOME
+}
+# shortcut to ssh clone a repo
+function gitssh(){
+   git clone ssh://git@github.com/'$1' 
+    }
+
+function pubip(){
+    public_ip=$(echo -e "from requests import get\nprint(get('https://api.ipify.org').text)" |python)
+    echo $public_ip
+    echo $(geoiplookup $public_ip)
+}
+
