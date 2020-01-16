@@ -14,8 +14,7 @@ alias "sourcez"="source ~/.zshrc"
 # shortcuts 
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
-alias "myip"="ip -br addr"
-alias "macip"="ipconfig getifaddr en0"
+alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
 alias "df"="df -h"
 alias "most recent"="ls -ltrRh"
@@ -23,14 +22,14 @@ alias "watch"="watch -n .1 -c"
 alias "meow"="highlight -O ansi --force"
 alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
 alias "day"="date +%d-%b-%Y"
-alias "gping"="ping google.com"
+alias "gp"="ping google.com"
 #
 alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
 # autocorrect
 alias "vm"="mv"
 alias "cd.."="cd .."
-
 alias "vun"="vim"
 alias "bim"="vim"
+
 alias "grep"="grep --color=always"
 #alias ""=""
