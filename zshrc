@@ -28,14 +28,20 @@
 export ZSH_BASE=$HOME/.zsh
 export ZSH=$ZSH_BASE/oh-my-zsh
 export ZSH_CUSTOM=$ZSH_BASE/custom
-
+#
 ZSH_THEME="gud"
 ZSH_DISABLE_COMPFIX=true
 DISABLE_UPDATE_PROMPT="true"
-
+#
 source $ZSH/oh-my-zsh.sh
 source $ZSH_BASE/functions
 source $ZSH_BASE/aliases
+#
+# check for private variable file, create one if it doesn't exist
+if [[ ! -a $HOME/.zsh-private ]]; then
+    echo "Creating a private file at $HOME/.zsh-private";
+    echo "# Put private alias or env variables in this file.\n" > $HOME/.zsh-private;
+fi
 source $HOME/.zsh-private
 
 unsetopt BEEP
@@ -68,11 +74,15 @@ source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-ssh-add -A >/dev/null 2>&1
-
-# for MacOS
-ipconfig getifaddr en0;
-# for linux
-#ip -br addr;
+case `uname` in
+    Darwin)
+        test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+        ssh-add -A >/dev/null 2>&1
+        ipconfig getifaddr en0
+    ;;
+    Linux)
+        ip route get $(ip route show 0.0.0.0/0 | \
+            grep -oP 'via \K\S+') | \
+            grep -oP 'src \K\S+';
+    ;;
+esac
