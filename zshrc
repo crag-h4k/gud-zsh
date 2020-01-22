@@ -5,6 +5,7 @@ export ZSH=$ZSH_BASE/oh-my-zsh
 export ZSH_CUSTOM=$ZSH_BASE/custom
 #
 ZSH_THEME="gud"
+ZSH_DISABLE_COMPFIX=true
 #
 source $ZSH/oh-my-zsh.sh
 source $ZSH_BASE/functions
@@ -33,18 +34,18 @@ setopt share_history        # share history between sessions
 watch=all                   # watch all logins
 logcheck=15                 # every 15 seconds
 # vim keybindings
-#bindkey -v
+# bindkey -v
 
 plugins=( 
     git
+    aws
     kubectl
     docker
     osx
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-completions
 )
-
-source $ZSH_CUSTOM/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $ZSH_CUSTOM/plugins/zsh-completions/zsh-completions.plugin.zsh
 
 case "$OSTYPE" in
   darwin*)
@@ -57,4 +58,4 @@ case "$OSTYPE" in
 esac
 #
 echo $LOCAL_IP;
-#
+source $ZSH/oh-my-zsh.sh
