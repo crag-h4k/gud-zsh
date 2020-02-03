@@ -51,6 +51,7 @@ case "$OSTYPE" in
   darwin*)
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
     ssh-add -A >/dev/null 2>&1;
+    alias "lsblk"="diskutil list";
   ;;
   linux*)
     #
