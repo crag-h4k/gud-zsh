@@ -31,4 +31,4 @@ function pubip(){
     echo $public_ip
     echo $(geoiplookup $public_ip)
 }
-
+#
