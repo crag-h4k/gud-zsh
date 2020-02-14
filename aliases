@@ -8,10 +8,10 @@ alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, retard ⊂(◉‿◉)つ'"
 alias "gita"="git add -A"
 alias "gitcm"="git commit -m"
 alias "gitpm"="git push origin master"
-# specific application aliases
-alias "venv"="source ./venv/bin/activate"
-alias "sourcez"="source ~/.zshrc"
 # shortcuts 
+alias "venv"="source ./venv/bin/activate"
+alias "mkvenv"="python3 -m venv venv"
+alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
 alias "myip"="echo $LOCAL_IP"
@@ -23,13 +23,10 @@ alias "meow"="highlight -O ansi --force"
 alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
 alias "day"="date +%d-%b-%Y"
 alias "gp"="ping google.com"
-#
 alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
 # autocorrect
 alias "vm"="mv"
 alias "cd.."="cd .."
 alias "vun"="vim"
 alias "bim"="vim"
-
 alias "grep"="grep --color=always"
-#alias ""=""
