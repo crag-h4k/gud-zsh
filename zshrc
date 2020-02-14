@@ -8,7 +8,7 @@ ZSH_THEME="gud"
 ZSH_DISABLE_COMPFIX=true
 #
 source $ZSH/oh-my-zsh.sh
-source $ZSH_BASE/functions
+source $ZSH_CUSTOM/funcs.zsh
 source $ZSH_BASE/aliases
 # check for private variable file, create one if it doesn't exist
 if [[ ! -a $HOME/.zsh-private ]]; then
