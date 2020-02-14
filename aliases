@@ -5,12 +5,12 @@ alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, retard ༼ つ ◕_◕ ༽つ'
 alias "wq"="echo '⊂(◉‿◉)つ Not Vim, retard ⊂(◉‿◉)つ'"
 alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, retard ⊂(◉‿◉)つ'"
 # git
-alias "gita"="git add -A"
 alias "gitcm"="git commit -m"
 alias "gitpm"="git push origin master"
 # specific application aliases
+alias "mkvenv"="python3 -m venv venv"
 alias "venv"="source ./venv/bin/activate"
-alias "sourcez"="source ~/.zshrc"
+alias "tinit"="touch __init__.py"
 # shortcuts 
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"

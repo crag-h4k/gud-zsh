@@ -5,6 +5,10 @@ function bak() {
     cp -r $original .$original.$(date +%d-%b-%Y).bak;
     }
 
+function tinit() { 
+    dst=$1;
+    touch $dst/__init__.py;
+    }
 function notes() { 
     name=$1;
     notes_dir=$HOME/notes;
@@ -32,3 +36,14 @@ function pubip(){
     echo $(geoiplookup $public_ip)
 }
 
+function test_pubip(){
+    public_ip=$(curl http://icanhazip.com)
+    geo_loc = $(geoiplookup $public_ip)
+    info = "$date\n$public_ip\n$geo_loc"
+    if [$info -eq 0]; then
+        echo "$info">> $HOME/.pubips;
+        echo $info;
+    else
+        echo "Couldn't lookup public IP info";
+    fi
+}
