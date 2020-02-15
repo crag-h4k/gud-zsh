@@ -1,0 +1,6 @@
+# init a python3-venv
+function mkvenv() {
+    dst=$1; 
+    options=$2
+    python3 -m venv $dst $options;
+    }

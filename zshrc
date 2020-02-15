@@ -1,20 +1,14 @@
 #!/bin/zsh
 #
-export ZSH_BASE=$HOME/.zsh
-export ZSH=$ZSH_BASE/oh-my-zsh
-export ZSH_CUSTOM=$ZSH_BASE/custom
-#
-ZSH_THEME="gud"
 ZSH_DISABLE_COMPFIX=true
 #
-source $ZSH/oh-my-zsh.sh
-source $ZSH_CUSTOM/funcs.zsh
-source $ZSH_BASE/aliases
+ZSH_THEME="gud"
 # check for private variable file, create one if it doesn't exist
 if [[ ! -a $HOME/.zsh-private ]]; then
     echo "Creating a private file at $HOME/.zsh-private";
     echo "# Put private alias or env variables in this file.\n" > $HOME/.zsh-private;
 fi
+#
 source $HOME/.zsh-private
 
 unsetopt BEEP
@@ -36,17 +30,6 @@ logcheck=15                 # every 15 seconds
 # vim keybindings
 # bindkey -v
 
-plugins=( 
-    git
-    aws
-    kubectl
-    docker
-    osx
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-    zsh-completions
-)
-
 case "$OSTYPE" in
   darwin*)
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
@@ -57,6 +40,14 @@ case "$OSTYPE" in
     #
   ;;
 esac
+
+source $ZSH_BASE/aliases
+
+for function in $ZSH_CUSTOM/functions/*; do
+      source $function
+  done
+
+plugins=(git aws kubectl docker docker-compose osx zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 #
-echo $LOCAL_IP;
 source $ZSH/oh-my-zsh.sh
+echo $LOCAL_IP;
