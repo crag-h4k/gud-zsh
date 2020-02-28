@@ -1,4 +1,4 @@
 function bak(){ 
     original=$1;
-    tar cJf .bak.$(date +%d-%b-%Y).$original.tar.xz $original;
+    cp -r $original .bak.$(date +%d-%b-%Y).$original
 }
