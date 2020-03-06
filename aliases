@@ -1,3 +1,4 @@
+alias "pubip"="export mypubip=$(curl http://icanhazip.com --silent) && echo 'Public IP: $mypubip' && geoiplookup $mypubip"
 alias "w"="echo '(⩾﹏⩽) Not Vim, retard (⩾﹏⩽)'"
 alias ":w"="echo '(⩾﹏⩽) Not Vim, retard (⩾﹏⩽)'"
 alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, retard ༼ つ ◕_◕ ༽つ'"
@@ -7,7 +8,7 @@ alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, retard ⊂(◉‿◉)つ'"
 # git
 alias "gitcm"="git commit -m"
 alias "gitpm"="git push origin master"
-# shortcuts 
+# shortcuts
 alias "mkvenv"="python3 -m venv venv"
 alias "venv"="source ./venv/bin/activate"
 alias "tinit"="touch __init__.py"
