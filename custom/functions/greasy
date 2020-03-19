@@ -1,4 +1,5 @@
-function greasy()
-{
+# plays a greasy video
+# requires vlc to be installed
+function greasy(){
   (vlc --play-and-exit --no-embedded-video --no-video-deco "$ZSH_CUSTOM/functions/resources/greasy-bubbles.mp4" && vlc://quit ) > /dev/null 2>&1;
 }
