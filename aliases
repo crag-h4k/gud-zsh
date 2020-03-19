@@ -1,4 +1,3 @@
-alias "pubip"="export mypubip=$(curl http://icanhazip.com --silent) && echo 'Public IP: $mypubip' && geoiplookup $mypubip"
 alias "w"="echo '(⩾﹏⩽) Not Vim, retard (⩾﹏⩽)'"
 alias ":w"="echo '(⩾﹏⩽) Not Vim, retard (⩾﹏⩽)'"
 alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, retard ༼ つ ◕_◕ ༽つ'"

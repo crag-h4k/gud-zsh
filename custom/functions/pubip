@@ -1,0 +1,5 @@
+function pubip () {
+    mypubip=$(curl http://icanhazip.com --silent);
+    echo "Public IP: $mypubip";
+    geoiplookup $mypubip;
+}
