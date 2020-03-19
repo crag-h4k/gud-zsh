@@ -1,7 +1,6 @@
 #!/bin/zsh
 #
 ZSH_DISABLE_COMPFIX=true
-#
 ZSH_THEME="gud"
 # check for private variable file, create one if it doesn't exist
 if [[ ! -a $HOME/.zsh-private ]]; then
@@ -16,8 +15,8 @@ unsetopt LIST_BEEP
 unsetopt HIST_BEEP
 
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=2048
-SAVEHIST=2048
+HISTSIZE=4096
+SAVEHIST=4096
 
 setopt append_history       # append history
 setopt hist_reduce_blanks   # removes un-needed blank spaces and lines from history
@@ -47,7 +46,7 @@ for function in $ZSH_CUSTOM/functions/*; do
       source $function
   done
 
-plugins=(git aws kubectl docker docker-compose osx vault zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(git aws kubectl docker docker-compose osx zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;
