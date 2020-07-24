@@ -32,8 +32,11 @@ logcheck=15                 # every 15 seconds
 case "$OSTYPE" in
   darwin*)
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
-    ssh-add -A >/dev/null 2>&1;
+    #ssh-add -A >/dev/null 2>&1;
     alias "lsblk"="diskutil list";
+    alias "ssh-add -k"="ssh-add-key"
+    alias "ssh-keychain-add"="ssh-add -k"
+    alias "incog"="open -a /Applications/Google\ Chrome\ Canary.app --args --incognito"
   ;;
   linux*)
     #

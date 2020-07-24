@@ -2,6 +2,7 @@ export ZSH_BASE=$HOME/.zsh
 export ZSH_CUSTOM=$ZSH_BASE/custom
 export ZSH=$ZSH_BASE/oh-my-zsh
 export PATH=$HOME/.local/bin:$PATH
+export PATH=$HOME/.private-bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/sbin:$PATH
 export LANG="en_US.UTF-8"
@@ -16,12 +17,15 @@ case "$OSTYPE" in
     export PATH=/usr/local/sbin:$PATH
     export PATH=/usr/local/opt:$PATH
     export PATH=/usr/local/opt/gettext/bin:$PATH
-    export PYSPARK_DRIVER_PYTHON=jupyter
-    export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+    export PATH=$HOME/vpn:$PATH
+    #export PYSPARK_DRIVER_PYTHON=jupyter
+    #export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
     export PATH=/Library/TeX/texbin:$PATH
+    export PATH=/usr/local/opt/bison/bin:$PATH
 
   ;;
   linux*)
+    export PATH=/snap/bin:$PATH
     #
   ;;
 esac
