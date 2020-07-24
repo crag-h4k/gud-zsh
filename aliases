@@ -24,7 +24,7 @@ alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
 alias "day"="date +%d-%b-%Y"
 alias "gp"="ping google.com"
 alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
-alias "sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"="dns-reset"
+alias "dns-reset"="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 # autocorrect
 alias "vm"="mv"
 alias "cd.."="cd .."
