@@ -37,6 +37,8 @@ case "$OSTYPE" in
     alias "ssh-add -k"="ssh-add-key"
     alias "ssh-keychain-add"="ssh-add -k"
     alias "incog"="open -a /Applications/Google\ Chrome\ Canary.app --args --incognito"
+    alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
+    alias "dns-reset"="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
   ;;
   linux*)
     #
@@ -49,7 +51,7 @@ for function in $ZSH_CUSTOM/functions/*; do
       source $function
   done
 
-plugins=(git aws kubectl docker docker-compose osx zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(git aws docker docker-compose osx zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;

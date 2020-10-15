@@ -1,6 +1,6 @@
 # Gud Vim
 
-This is a pretty good zsh setup, 
+This is a pretty good zsh setup.
 
 ## Install
 
@@ -11,7 +11,7 @@ Make sure vanilla zsh is already installed via system package manager.
 #### For Debian GNU/Linux:
 
 ```sh
-sudo apt isntall zsh -y
+sudo apt install zsh -y
 ```
 
 #### For macOS
