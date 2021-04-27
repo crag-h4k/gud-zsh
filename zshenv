@@ -19,12 +19,15 @@ case "$OSTYPE" in
     export PATH=/usr/local/opt/gettext/bin:$PATH
     export PATH=/usr/local/opt/bison/bin:$PATH
     export PATH=$HOME/.vpn:$PATH
+    export PATH=$HOME/.private_bin:$PATH
     export PATH=/Library/TeX/texbin:$PATH
     #export PYSPARK_DRIVER_PYTHON=jupyter
     #export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
   ;;
   linux*)
     export PATH=/snap/bin:$PATH
+    export PATH=/opt/bin:$PATH
+    export PYTHONPATH=${PYTHONPATH}:/opt/code/libs
     #
   ;;
 esac

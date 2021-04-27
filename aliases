@@ -16,7 +16,6 @@ alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
 alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
-alias "df"="df -h"
 alias "most recent"="ls -ltrRh"
 alias "watch"="watch -n .1 -c"
 alias "meow"="highlight -O ansi --force"
@@ -30,7 +29,36 @@ alias "vun"="vim"
 alias "bim"="vim"
 alias "grep"="grep --color=always"
 alias "ta"="tmux attach"
-## MacOS specific 
-alias "dns-reset"="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
-alias "resnet"="sudo networksetup -listallhardwareports |grep -o 'Hardware Port: .*'| cut -f2 -d:| xargs -n3 -I_ciface -- sh -c ' networksetup -setnetworkserviceenabled "_ciface" off >/dev/null 2>&1 && networksetup -setnetworkserviceenabled "_ciface" on > /dev/null 2>&1'"
-alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
+###### 
+case "$OSTYPE" in
+  darwin*)
+    ## macOS specific aliases
+    alias "lsblk"="diskutil list";
+    alias "ssh-add -k"="ssh-add-key"
+    alias "ssh-keychain-add"="ssh-add -k"
+    alias "incog"="open -a /Applications/Google\ Chrome\ Canary.app --args --incognito"
+    alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
+    alias "dns-reset"="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
+    alias "resnet"="sudo networksetup -listallhardwareports |grep -o 'Hardware Port: .*'| cut -f2 -d:| xargs -n3 -I_ciface -- sh -c ' networksetup -setnetworkserviceenabled '_ciface' off >/dev/null 2>&1 && networksetup -setnetworkserviceenabled "_ciface" on > /dev/null 2>&1'"
+    # wireless testing
+    alias "scanarea"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
+    alias "currentapi"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo"
+    alias "setchannelto1"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=2"
+    alias "setchannelto2"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=2"
+    alias "setchannelto3"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=3"
+    alias "setchannelto4"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=4"
+    alias "setchannelto5"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=5"
+    alias "setchannelto6"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=6"
+    alias "setchannelto7"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=7"
+    alias "setchannelto8"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=8"
+    alias "setchannelto9"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=9"
+    alias "setchannelto10"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=10"
+    alias "setchannelto11"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=11"
+    alias "setchannelto12"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=12"
+    alias "setchannelto13"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --channel=13"
+  ;;
+  linux*)
+    # Linux specific aliases
+    alias "df"="df -h"
+  ;;
+esac
