@@ -1,4 +1,4 @@
-# Gud Vim
+# gud zsh
 
 This is a pretty good zsh setup.
 
