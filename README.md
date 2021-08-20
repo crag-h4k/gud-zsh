@@ -31,6 +31,8 @@ Then install `zsh` via `brew`
 brew install zsh
 ```
 
+Install the *gud* zsh stuff
+
 ```sh
 # back stuff up
 BAK=$HOME/.zsh-$(date +%d-%b-%Y).bak
