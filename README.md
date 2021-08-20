@@ -29,6 +29,10 @@ brew install zsh
 ```
 
 ```sh
+# back stuff up
+BAK=$HOME/.zsh-$(date +%d-%b-%Y).bak
+mkdir $BAK
+mv $HOME/.zsh* $BAK/.
 git clone https://github.com/git-gud-1/gud-zsh.git $HOME/.zsh --recursive
 ln -s $HOME/.zsh/zshrc ~/.zshrc
 ln -s $HOME/.zsh/zshenv ~/.zshenv
