@@ -45,7 +45,17 @@ for function in $ZSH_CUSTOM/functions/*; do
       source $function
   done
 
-plugins=(git aws docker docker-compose macos ssh-agent zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+plugins=(
+    git
+    aws
+    docker
+    docker-compose
+    macos
+    ssh-agent
+    zsh-autosuggestions
+    zsh-syntax-highlighting 
+    zsh-completions
+)
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;

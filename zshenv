@@ -1,6 +1,6 @@
 export ZSH_BASE=$HOME/.zsh
 export ZSH_CUSTOM=$ZSH_BASE/custom
-export ZSH=$ZSH_BASE/oh-my-zsh
+export ZSH=$ZSH_BASE/ohmyzsh
 export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.private-bin:$PATH
 export PATH=/usr/local/bin:$PATH
