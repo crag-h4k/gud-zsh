@@ -1,4 +1,3 @@
-alias "w"="echo '(⩾﹏⩽) Not Vim, smooth brain. (⩾﹏⩽)'"
 alias ":w"="echo '(⩾﹏⩽) Not Vim, smooth brain. (⩾﹏⩽)'"
 alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, are you basic? ༼ つ ◕_◕ ༽つ'"
 alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, are you basic? ༼ つ ◕_◕ ༽つ'"
@@ -6,7 +5,10 @@ alias "wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 # git
 alias "gitcm"="git commit -m"
-alias "gitpm"="git push origin master"
+alias "gitpm"="git push origin main"
+alias "gitck"="git checkout"
+alias "gitcam"="git commit -a -m"
+alias "gitmours"="git merge --strategy=ours"
 # shortcuts
 alias "venv"="source ./venv/bin/activate"
 alias "tinit"="touch __init__.py"
