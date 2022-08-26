@@ -59,3 +59,4 @@ plugins=(
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;
+
