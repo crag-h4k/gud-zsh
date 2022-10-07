@@ -13,8 +13,6 @@ export LOCAL_IP="$(/sbin/ifconfig -a | grep -E 'inet.*netmask' | grep -v '127.0.
 #
 case "$OSTYPE" in
   darwin*)
-    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-    export PATH=$HOME/anaconda3/bin:$PATH
     export PATH=/usr/local/sbin:$PATH
     export PATH=/usr/local/opt:$PATH
     export PATH=/usr/local/opt/gettext/bin:$PATH
@@ -22,18 +20,7 @@ case "$OSTYPE" in
     export PATH=$HOME/.vpn:$PATH
     export PATH=$HOME/.private_bin:$PATH
     export PATH=/Library/TeX/texbin:$PATH
-    export SPARK_HOME=$HOME/spark_3-1-2 
-    # python virtualenvwrapper
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/Devel
-    source $HOME/anaconda3/bin/virtualenvwrapper.sh
-    #export PYSPARK_DRIVER_PYTHON=jupyter
-    jdk () {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
-        } 
-    #export PYSPARK_DRIVER_PYTHON_OPTS='notebook'
+    export PATH="/usr/local/opt/llvm/bin:$PATH"
   ;;
   linux*)
     export PATH=/snap/bin:$PATH

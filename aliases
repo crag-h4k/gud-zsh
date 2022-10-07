@@ -1,7 +1,7 @@
 # remember dis not vim
 alias ":w"="echo '(⩾﹏⩽) Not Vim, smooth brain. (⩾﹏⩽)'"
-alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, are you basic? ༼ つ ◕_◕ ༽つ'"
-alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, are you basic? ༼ つ ◕_◕ ༽つ'"
+alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain. ༼ つ ◕_◕ ༽つ'"
+alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain  ༼ つ ◕_◕ ༽つ'"
 alias "wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 
@@ -15,8 +15,10 @@ alias "gitupsub"="git submodule update --remote --init --recursive"
 
 # shortcuts
 alias "tinit"="touch __init__.py"
+alias "mkvenv"="python3 -m venv venv"
 alias "venv"="source ./venv/bin/activate"
 alias "dvenv"="deactivate"
+alias "rmvenv"="rm -rf venv && python3 -m venv venv"
 alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"

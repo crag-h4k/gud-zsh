@@ -12,4 +12,4 @@
 	url = https://github.com/zsh-users/zsh-completions
 [submodule "ohmyzsh"]
 	path = ohmyzsh
-	url = git@github.com:ohmyzsh/ohmyzsh
+	url = https://github.com/ohmyzsh/ohmyzsh

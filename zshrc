@@ -15,15 +15,14 @@ unsetopt LIST_BEEP
 unsetopt HIST_BEEP
 
 HISTFILE=$HOME/.zsh_history
-HISTSIZE=4096
-SAVEHIST=8192
+HISTSIZE=16384
+SAVEHIST=16384
 setopt APPEND_HISTORY       # append history
 setopt EXTENDED_HISTORY     # save time/date in zsh_history
 setopt HIST_FIND_NO_DUPS    # dedup hist file
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
 setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
-# setopt INC_APPEND_HISTORY # conflicts with share_history
 
 watch=all                   # watch all logins
 logcheck=10                 # every 15 seconds
@@ -53,7 +52,7 @@ plugins=(
     macos
     ssh-agent
     zsh-autosuggestions
-    zsh-syntax-highlighting 
+    zsh-syntax-highlighting
     zsh-completions
 )
 #

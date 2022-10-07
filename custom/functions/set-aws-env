@@ -1,0 +1,33 @@
+# I have several AWS profiles in my ~/.aws/config thus there are several access keys and secret keys in my 
+# ~/.aws/credentials file.  Sometimes (e.g. when using kops or kubectl) I need to have the AWS_ACCESS_KEY_ID 
+# and AWS_SECRET_ACCESS_KEY environment variables set.  There doesn't seem to be a way to use the aws cli to set these
+# environment variables for me, so... well... here we are.
+#
+# This script will:
+# * Look at the ~/.aws/credentials file for the specified profile
+# * Get the next two lines beneath the profile name, which are the access_key_id and secret_key respectively
+# * Export those two values as environment variables 
+#
+# Example usage to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to values for your "default" profile:
+#   set-aws-env default
+#
+# Example usage to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to values for your "beta-env" profile:
+#   set-aws-env beta-env
+#
+# Example usage to set AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY to values for your "qa" profile:
+#   set-aws-env qa
+#
+# If you have Oh My ZSH installed, this script can be placed in $HOME/.oh-my-zsh/custom and marked as executable.  After
+# you source your ~/.zshrc, you should be able to call this function from anywhere.
+function set-aws-env() {
+    typeset -A AWS_SETTINGS=($(awk -F"=" "/\[$1\]/{ x = NR + 2; next }(NR <= x){ printf \"%s %s \", \$1, \$2 }" ~/.aws/credentials))
+    for k v in ${(kv)AWS_SETTINGS}
+    do
+        export ${k:u}=$v
+    done
+}
+# An example of what the environment variables might look like after running the function:
+# % set-aws-env default
+# %  env | grep AWS
+# AWS_ACCESS_KEY_ID=[whatever the access key id is for the specified environment]
+# AWS_SECRET_ACCESS_KEY=[whatever the secret access key is for the specified environment]
