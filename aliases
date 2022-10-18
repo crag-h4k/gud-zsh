@@ -4,15 +4,15 @@ alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain. ༼ つ ◕_◕ �
 alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain  ༼ つ ◕_◕ ༽つ'"
 alias "wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
-
 # git
 alias "gitcm"="git commit -m"
 alias "gitpm"="git push origin main"
 alias "gitck"="git checkout"
 alias "gitcam"="git commit -a -m"
 alias "gitmours"="git merge --strategy=ours"
-alias "gitupsub"="git submodule update --remote --init --recursive"
-
+alias "gitsubup"="git submodule update --remote --init --recursive"
+alias "gitrs"="git restore"
+alias "gitrename"="git branch -m"
 # shortcuts
 alias "tinit"="touch __init__.py"
 alias "mkvenv"="python3 -m venv venv"
