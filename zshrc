@@ -23,7 +23,8 @@ setopt HIST_FIND_NO_DUPS    # dedup hist file
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
 setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
-
+# turn on zmv
+autoload zmv
 watch=all                   # watch all logins
 logcheck=10                 # every 15 seconds
 # vim keybindings
