@@ -30,15 +30,16 @@ alias "meow"="highlight -O ansi --force"
 alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
 alias "day"="date +%d-%b-%Y"
 alias "gp"="ping google.com"
+alias "grep"="grep --color=always"
+alias "grwe"="grep  --color=always -rnwe"
+alias "ta"="tmux attach"
+alias "tl"="tmux list-sessions"
 # autocorrect
 alias "vm"="mv"
 alias "cd.."="cd .."
 alias "vun"="vim"
 alias "bim"="vim"
-alias "grep"="grep --color=always"
-alias "ta"="tmux attach"
-alias "tl"="tmux list-sessions"
-###### 
+######
 case "$OSTYPE" in
   darwin*)
     ## macOS specific aliases
