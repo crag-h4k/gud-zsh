@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+# this is a short script to show file differences between branch.
+# default test check against is test
+function gitdf(){
+    if [ $# -eq 0 ]; then
+        branch="test"
+        git diff --name-status $branch
+    elif [ $# -eq 2 ]; then
+        git diff --name-status $1 $2
+    else;
+        git diff --name-status $1
+    fi
+}
