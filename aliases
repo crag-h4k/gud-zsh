@@ -13,6 +13,7 @@ alias "gitmours"="git merge --strategy=ours"
 alias "gitsubupd"="git submodule update --remote --init --recursive"
 alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
+#alias "gitbrd"="git diff --name-status"
 # shortcuts
 alias "tinit"="touch __init__.py"
 alias "mkvenv"="python3 -m venv venv"
