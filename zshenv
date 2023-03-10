@@ -16,6 +16,8 @@ case "$OSTYPE" in
     darwin*)
         export PATH=$HOME/.vpn:$PATH
         export PATH=$HOME/.private_bin:$PATH
+        export PATH=$HOME/.cargo/bin:$PATH
+
         case "$ARCH" in
             arm64*)
                 ;;
