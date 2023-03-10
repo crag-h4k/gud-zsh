@@ -23,6 +23,7 @@ setopt HIST_FIND_NO_DUPS    # dedup hist file
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
 setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
+# setopt HISTIGNORE=”*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]*”
 # turn on zmv
 autoload zmv
 watch=all                   # watch all logins
