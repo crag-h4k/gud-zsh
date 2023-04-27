@@ -17,8 +17,8 @@ alias "gitrename"="git branch -m"
 # shortcuts
 alias "tinit"="touch __init__.py"
 alias "mkvenv"="python3 -m venv venv"
-alias "venv"="source $(pwd)/venv/bin/activate"
-alias "tvenv"="source $(pwd)/tests/venv/bin/activate"
+alias "venv"='source "$(realpath)"/venv/bin/activate'
+alias "tvenv"='source "$(realpath)"/tests/venv/bin/activate'
 alias "dvenv"="deactivate"
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
 alias "sourcez"="source ~/.zshrc"

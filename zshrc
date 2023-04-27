@@ -10,19 +10,24 @@ fi
 #
 source $HOME/.zsh-private
 
-unsetopt BEEP
+# No beeps!
 unsetopt LIST_BEEP
 unsetopt HIST_BEEP
+unsetopt BEEP
 
-HISTFILE=$HOME/.zsh_history
-HISTSIZE=16384
-SAVEHIST=16384
-setopt APPEND_HISTORY       # append history
+export HISTFILE=$HOME/.zsh_history
+export HISTSIZE=32768       # the number of items for the internal history list
+export SAVESIZE=32768       # maximum number of items for the history file
 setopt EXTENDED_HISTORY     # save time/date in zsh_history
-setopt HIST_FIND_NO_DUPS    # dedup hist file
+setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
 setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+# setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+# setopt HIST_FIND_NO_DUPS  # Do not display a line previously found.
 # setopt HISTIGNORE=”*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]*”
 # turn on zmv
 autoload zmv
