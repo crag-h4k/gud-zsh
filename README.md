@@ -44,3 +44,13 @@ ln -s $HOME/.zsh/zshenv ~/.zshenv
 sudo chsh -s $(which zsh)
 ```
 
+#### MacOS, update ruby
+
+MacOS has a heinously out of date version of ruby. Install newer releases via
+the commands below.
+
+```zsh
+brew install chruby ruby-install
+ruby-install ruby
+
+```
