@@ -6,6 +6,7 @@ export PATH=$HOME/.private-bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/sbin:$PATH
 export LANG="en_US.UTF-8"
+export GPG_TTY=$(tty)
 #
 export UPDATE_ZSH_DAYS=7
 export HISTTIMEFORMAT="%d-%b-%y %*"
