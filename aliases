@@ -21,6 +21,7 @@ alias "venv"='source "$(realpath)"/venv/bin/activate'
 alias "tvenv"='source "$(realpath)"/tests/venv/bin/activate'
 alias "dvenv"="deactivate"
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
+alias "show"="2>&1|tee"
 alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
@@ -74,4 +75,5 @@ case "$OSTYPE" in
     alias "df"="df -h"
   ;;
 esac
+
 

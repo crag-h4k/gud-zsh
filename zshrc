@@ -60,6 +60,7 @@ plugins=(
     docker
     docker-compose
     macos
+    gpg-agent
     ssh-agent
     zsh-autosuggestions
     zsh-syntax-highlighting
