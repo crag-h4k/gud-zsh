@@ -39,9 +39,6 @@ logcheck=10                 # every 15 seconds
 case "$OSTYPE" in
   darwin*)
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
-    source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-    source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-    chruby ruby-3.2.2
   ;;
   linux*)
     ssh-add -A >/dev/null 2>&1;
