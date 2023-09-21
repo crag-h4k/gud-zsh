@@ -21,7 +21,6 @@ alias "venv"='source $(pwd)/venv/bin/activate'
 alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "dvenv"="deactivate"
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
-alias "show"="2>&1|tee"
 alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
@@ -35,10 +34,18 @@ alias "day"="date +%d-%b-%Y"
 alias "dt"="date +%d-%b-%Y_%H.%M"
 alias "gp"="ping google.com"
 alias "grep"="grep --color=always"
-alias "grwe"="grep  --color=always -rnwe"
+alias "grepp"="grep  --color=always -rnwe"
 alias "ta"="tmux attach"
 alias "tl"="tmux list-sessions"
 alias "teelog"="2>&1 | tee"
+#
+# Docker
+# Stop all containers:
+alias "docker stopall"="docker stop $(docker ps -aq)"
+# Remove all containers
+alias "docker rmf"="docker rm $(docker ps -aq)"
+# Remove all images
+alias "docker rmif"="docker rmi $(docker images -q)"
 #
 # autocorrect
 alias "vm"="mv"

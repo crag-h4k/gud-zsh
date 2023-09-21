@@ -16,15 +16,16 @@ unsetopt HIST_BEEP
 unsetopt BEEP
 
 export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=32768       # the number of items for the internal history list
-export SAVESIZE=32768       # maximum number of items for the history file
+export HISTSIZE=10000000    # the number of items for the internal history list
+export SAVESIZE=10000000    # maximum number of items for the history file
 setopt EXTENDED_HISTORY     # save time/date in zsh_history
 setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
+setopt HIST_IGNORE_SPACE    # ignore commands that start with a space
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
-setopt HIST_VERIFY          # verify before executing history command
+# setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+#setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 # setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 # setopt HIST_FIND_NO_DUPS  # Do not display a line previously found.
@@ -52,13 +53,18 @@ for function in $ZSH_CUSTOM/functions/*; do
   done
 
 plugins=(
-    git
     aws
+    brew
+    colored-man-pages
+    colorize
     docker
     docker-compose
-    macos
     gpg-agent
+    git
+    macos
     ssh-agent
+    # hit ESC twice to have last command prepended with `sudo`
+    sudo
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
