@@ -83,6 +83,8 @@ case "$OSTYPE" in
   linux*)
     # Linux specific aliases
     alias "df"="df -h"
+    # map ata[\d] to device in /dev/sd*
+    alias "whichdisk"="ls -l /sys/block/sd* | sed 's/.*\(sd.*\) -.*\(ata.*\)\/h.*/\2 => \1/'"
   ;;
 esac
 
