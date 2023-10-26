@@ -64,7 +64,8 @@ plugins=(
     macos
     ssh-agent
     # hit ESC twice to have last command prepended with `sudo`
-    sudo
+    # sudo
+    terraform
     zsh-autosuggestions
     zsh-syntax-highlighting
     zsh-completions
