@@ -16,7 +16,7 @@ alias "gitrename"="git branch -m"
 #alias "gitbrd"="git diff --name-status"
 # shortcuts
 alias "tinit"="touch __init__.py"
-alias "mkvenv"="python3 -m venv venv"
+# alias "mkvenv"="python3 -m venv venv"
 alias "venv"='source $(pwd)/venv/bin/activate'
 alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "dvenv"="deactivate"

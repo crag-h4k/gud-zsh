@@ -1,5 +1,5 @@
 # nmap pingsweep
 function psw() {
-    subnet=$1; 
+    subnet=$1;
     sudo nmap $subnet -sP
 }
