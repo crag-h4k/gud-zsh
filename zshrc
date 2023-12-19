@@ -28,7 +28,6 @@ setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming 
 #setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
 # setopt BANG_HIST                 # Treat the '!' character specially during expansion.
-# setopt HIST_FIND_NO_DUPS  # Do not display a line previously found.
 # setopt HISTIGNORE=”*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]*”
 # turn on zmv
 autoload zmv
