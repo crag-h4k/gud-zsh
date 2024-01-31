@@ -44,6 +44,12 @@ ln -s $HOME/.zsh/zshenv ~/.zshenv
 sudo chsh -s $(which zsh)
 ```
 
+Then spawn a new shell by opening a new terminal session or by typing...
+
+```sh
+zsh
+```
+
 #### MacOS, update ruby
 
 MacOS has a heinously out of date version of ruby. Install newer releases via
