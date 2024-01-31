@@ -31,8 +31,12 @@ case "$OSTYPE" in
         esac
         ;;
     linux*)
+        export CONDA_PATH=/opt/miniconda3
         export PATH=/snap/bin:$PATH
         export PATH=/opt/bin:$PATH
-        export PYTHONPATH=${PYTHONPATH}:/opt/code/libs
+        export PATH=/opt/miniconda3/bin:$PATH
+        export PATH=/usr/local/go/bin:$PATH
+        export PYTHONPATH=/opt/code/libs:${PYTHONPATH}
+        export PYTHONPATH=${PYTHONPATH}:$CONDA_PATH
         ;;
 esac
