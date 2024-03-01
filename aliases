@@ -13,10 +13,8 @@ alias "gitmours"="git merge --strategy=ours"
 alias "gitsup"="git submodule update --remote --init --recursive"
 alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
-#alias "gitbrd"="git diff --name-status"
 # shortcuts
 alias "tinit"="touch __init__.py"
-# alias "mkvenv"="python3 -m venv venv"
 alias "venv"='source $(pwd)/venv/bin/activate'
 alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "dvenv"="deactivate"
@@ -28,7 +26,6 @@ alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
 alias "most recent"="ls -ltrRh"
 alias "watch"="watch -n .1 -c"
-#alias "meow"="highlight -O ansi --force"
 alias "meow"="highlight"
 alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
 alias "day"="date +%d-%b-%Y"
@@ -39,14 +36,13 @@ alias "grepp"="grep  --color=always -rnwe"
 alias "ta"="tmux attach"
 alias "tl"="tmux list-sessions"
 alias "teelog"="2>&1 | tee"
-#
 # Docker
 # Stop all containers:
-alias "docker stopall"="docker stop $(docker ps -aq)"
+alias "docker_stopall"="docker stop $(docker ps -aq)"
 # Remove all containers
-alias "docker rmf"="docker rm $(docker ps -aq)"
+alias "docker_rmf"="docker rm $(docker ps -aq)"
 # Remove all images
-alias "docker rmif"="docker rmi $(docker images -q)"
+alias "docker_rmif"="docker rmi $(docker images -q)"
 #
 # autocorrect
 alias "vm"="mv"

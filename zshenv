@@ -18,8 +18,11 @@ case "$OSTYPE" in
         export PATH=$HOME/.vpn:$PATH
         export PATH=$HOME/.private_bin:$PATH
         export PATH=$HOME/.cargo/bin:$PATH
+        # export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
+        # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
         case "$ARCH" in
             arm64*)
+                alias "act"="act --container-architecture linux/amd64"
                 ;;
             86*)
                 export PATH=/usr/local/sbin:$PATH

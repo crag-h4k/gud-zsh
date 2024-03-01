@@ -22,11 +22,10 @@ setopt EXTENDED_HISTORY     # save time/date in zsh_history
 setopt INC_APPEND_HISTORY   # Write to the history file immediately, not when the shell exits.
 setopt HIST_IGNORE_SPACE    # ignore commands that start with a space
 setopt HIST_REDUCE_BLANKS   # removes un-needed blank spaces and lines from history
-# setopt HIST_VERIFY          # verify before executing history command
 setopt SHARE_HISTORY        # share history between sessions
-setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
-#setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
-setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_VERIFY          # show command with history expansion to user before running it
+# setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+# setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
 # setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 # setopt HISTIGNORE=”*[Pp][Aa][Ss][Ss][Ww][Oo][Rr][Dd]*”
 # turn on zmv
@@ -62,8 +61,6 @@ plugins=(
     git
     macos
     ssh-agent
-    # hit ESC twice to have last command prepended with `sudo`
-    # sudo
     terraform
     zsh-autosuggestions
     zsh-syntax-highlighting
