@@ -13,6 +13,7 @@ alias "gitmours"="git merge --strategy=ours"
 alias "gitsup"="git submodule update --remote --init --recursive"
 alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
+alias "ghp"="gh copilot"
 # shortcuts
 alias "tinit"="touch __init__.py"
 alias "venv"='source $(pwd)/venv/bin/activate'
@@ -21,6 +22,7 @@ alias "dvenv"="deactivate"
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
 alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
+alias "vimlog"="vim -V9myVim.log"
 alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
 alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
@@ -43,6 +45,7 @@ alias "docker_stopall"="docker stop $(docker ps -aq)"
 alias "docker_rmf"="docker rm $(docker ps -aq)"
 # Remove all images
 alias "docker_rmif"="docker rmi $(docker images -q)"
+alias "docker-compose-update"="docker-compose pull && docker-compose up --force-recreate --build -d"
 #
 # autocorrect
 alias "vm"="mv"
@@ -53,6 +56,7 @@ alias "bim"="vim"
 case "$OSTYPE" in
   darwin*)
     ## macOS specific aliases
+    alias "python"="python3"
     alias "lsblk"="diskutil list";
     alias "ssh-add -k"="ssh-add-key"
     alias "ssh-keychain-add"="ssh-add -k"
@@ -85,4 +89,5 @@ case "$OSTYPE" in
   ;;
 esac
 
-
+########
+#eval "$(gh copilot alias -- zsh)"

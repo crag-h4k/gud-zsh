@@ -1,6 +1,7 @@
 # set terraform env vars and log level
 function tflog() {
     local loglevel="INFO"
+    local log_provider="INFO"
     local log_file="$PWD/terraform-$(date +%d-%b-%Y_%H-%M).log"
 
     if [ $# -gt 0 ]; then
