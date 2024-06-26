@@ -64,6 +64,8 @@ case "$OSTYPE" in
     alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"
     alias "dns-reset"="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
     alias "resnet"="sudo networksetup -listallhardwareports |grep -o 'Hardware Port: .*'| cut -f2 -d:| xargs -n3 -I_ciface -- sh -c ' networksetup -setnetworkserviceenabled '_ciface' off >/dev/null 2>&1 && networksetup -setnetworkserviceenabled "_ciface" on > /dev/null 2>&1'"
+    # Display TimeMachine logs
+    alias "tm_log"="printf '[3J' && log show --predicate 'subsystem == com.apple.TimeMachine' --info --last 6h | grep -F 'eMac' | grep -Fv 'etat' | awk -F']' '{print substr(-zsh,1,19), }'"
     # wireless testing
     alias "scanarea"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport -s"
     alias "currentapi"="sudo /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo"
