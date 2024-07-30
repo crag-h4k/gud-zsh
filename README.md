@@ -28,7 +28,7 @@ If you don't have `homebrew` already installed, do it will the following command
 Then install `zsh` via `brew`
 
 ```sh
-brew install zsh
+brew install zsh zsh-completions zsh-lovers
 ```
 
 Install the *gud* zsh stuff

@@ -35,14 +35,7 @@ logcheck=10                 # every 15 seconds
 # vim keybindings
 # bindkey -v
 
-case "$OSTYPE" in
-  darwin*)
-    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
-  ;;
-  linux*)
-    ssh-add -A >/dev/null 2>&1;
-  ;;
-esac
+
 
 source $ZSH_BASE/aliases
 
@@ -69,3 +62,14 @@ plugins=(
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;
+
+autoload -U +X bashcompinit && bashcompinit
+case "$OSTYPE" in
+  darwin*)
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
+    complete -o nospace -C /opt/homebrew/bin/terragrunt terragrunt
+  ;;
+  linux*)
+    ssh-add -A >/dev/null 2>&1;
+  ;;
+esac
