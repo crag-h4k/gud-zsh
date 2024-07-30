@@ -34,6 +34,7 @@ case "$OSTYPE" in
                 export PATH=/usr/local/opt/llvm/bin:$PATH
                 ;;
         esac
+        eval $(/opt/homebrew/bin/brew shellenv)
         ;;
     linux*)
         export CONDA_PATH=/opt/miniconda3
