@@ -5,6 +5,11 @@ export PATH=$HOME/.local/bin:$PATH
 export PATH=$HOME/.private-bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/sbin:$PATH
+# Max and Mojo Environment
+export MAX_PATH=$HOME/.modular/pkg/packages.modular.com_max
+export MODULAR_HOME=$HOME/.modular
+export PATH=$MAX_PATH/bin:$PATH
+
 export LANG="en_US.UTF-8"
 export GPG_TTY=$(tty)
 #
@@ -18,7 +23,6 @@ case "$OSTYPE" in
         export PATH=$HOME/.vpn:$PATH
         export PATH=$HOME/.private_bin:$PATH
         export PATH=$HOME/.cargo/bin:$PATH
-        # export OLLAMA_ORIGINS="*"
         export OLLAMA_ORIGINS="app://obsidian.md*"
         # export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
         # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
