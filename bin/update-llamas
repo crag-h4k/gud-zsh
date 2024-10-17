@@ -1,0 +1,21 @@
+#!/usr/bin/env zsh
+# This script pulls the latest code from the llamas repo and updates the llamas
+# repo on the local machine.
+
+models=( $(ollama list | awk 'NR>1 {print $1}') )
+echo "Will update the following models:"
+for model in "${models[@]}"; do
+        echo "\033[94m${model}\033[0m"
+done
+echo "Continue? (y/n)"
+read -k 1
+if [[ $REPLY != "y" ]]; then
+        echo "Exiting..."
+        exit 1
+fi
+echo "\nUpdating..."
+for model in "${models[@]}"; do
+        #echo "Updating $model"
+        echo "\nUpdating \033[94m${model}\033[0m"
+        ollama pull "$model"
+done

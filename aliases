@@ -91,6 +91,6 @@ case "$OSTYPE" in
     alias "whichdisk"="ls -l /sys/block/sd* | sed 's/.*\(sd.*\) -.*\(ata.*\)\/h.*/\2 => \1/'"
   ;;
 esac
-
 ########
 #eval "$(gh copilot alias -- zsh)"
+alias "tfmops"="AWS_PROFILE='AWS_cspm-ops-prod'"

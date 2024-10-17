@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# put resources in array()
+array=()
+for resource in "$array[@]"; do
+    terraform state rm "$resource"
+    sleep 3
+done
