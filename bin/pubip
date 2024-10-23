@@ -1,0 +1,5 @@
+#!/usr/bin/env zsh
+daytime=$(date +%d-%b-%Y_%H:%M)
+mypubip=$(curl http://icanhazip.com --silent);
+echo "Public IP: $mypubip at $daytime";
+geoiplookup $mypubip;

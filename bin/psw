@@ -1,0 +1,4 @@
+# #!/usr/bin/env zsh
+# nmap pingsweep
+subnet=$1;
+sudo nmap $subnet -sP

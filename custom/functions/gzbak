@@ -1,5 +1,0 @@
-# make a gzip backup
-function gzbak(){
-    original=$1;
-    tar cJf .bak.$(date +%d-%b-%Y).$original.tar.xz $original;
-}

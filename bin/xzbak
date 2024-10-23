@@ -1,0 +1,6 @@
+# make a XZ backup
+original=$1;
+archive=".bak.$(date +%d-%b-%Y).$original.tar.xz";
+echo "XZ archive of \033[94m$original\033[0m"
+echo "Will be created at \033[94m$archive\033[0m"
+tar cJf $archive $original;
