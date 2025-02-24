@@ -1,2 +1,3 @@
 .zsh-private
+zsh_history_backup/**
 __init__.py
