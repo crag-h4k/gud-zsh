@@ -1,7 +1,9 @@
 # remember dis not vim
 alias ":w"="echo '(⩾﹏⩽) Not Vim, smooth brain. (⩾﹏⩽)'"
+alias ":W"="echo '(⩾﹏⩽) Not Vim, smooth brain. (⩾﹏⩽)'"
 alias "q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain. ༼ つ ◕_◕ ༽つ'"
 alias ":q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain  ༼ つ ◕_◕ ༽つ'"
+alias ":Q"="echo '༼ つ ◕_◕ ༽つ Not Vim, smooth brain  ༼ つ ◕_◕ ༽つ'"
 alias "wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 alias ":wq"="echo '⊂(◉‿◉)つ Not Vim, brainlet. ⊂(◉‿◉)つ'"
 # git
@@ -16,14 +18,15 @@ alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
 alias "ghp"="gh copilot"
 # shortcuts
+# Python3
 alias "tinit"="touch __init__.py"
 alias "venv"='source $(pwd)/venv/bin/activate'
 alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
+alias "flake8"="flake8 --append-config ~/.vim/.flake8"
 alias "sourcez"="source ~/.zshrc"
 alias "vi"="vim"
 alias "vimlog"="vim -V9myVim.log"
-alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
 alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
 alias "most recent"="ls -ltrRh"
@@ -89,6 +92,8 @@ case "$OSTYPE" in
     alias "df"="df -h"
     # map ata[\d] to device in /dev/sd*
     alias "whichdisk"="ls -l /sys/block/sd* | sed 's/.*\(sd.*\) -.*\(ata.*\)\/h.*/\2 => \1/'"
+    # this doesn't work with MacOS
+    alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
   ;;
 esac
 ########
