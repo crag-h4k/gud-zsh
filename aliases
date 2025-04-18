@@ -16,7 +16,6 @@ alias "gitmours"="git merge --strategy=ours"
 alias "gitsup"="git submodule update --remote --init --recursive"
 alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
-alias "ghp"="gh copilot"
 # shortcuts
 # Python3
 alias "tinit"="touch __init__.py"
@@ -25,8 +24,6 @@ alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
 alias "flake8"="flake8 --append-config ~/.vim/.flake8"
 alias "sourcez"="source ~/.zshrc"
-alias "vi"="vim"
-alias "vimlog"="vim -V9myVim.log"
 alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
 alias "most recent"="ls -ltrRh"
@@ -48,18 +45,24 @@ alias "docker_stopall"="docker stop $(docker ps -aq)"
 alias "docker_rmf"="docker rm $(docker ps -aq)"
 # Remove all images
 alias "docker_rmif"="docker rmi $(docker images -q)"
-alias "docker-compose-update"="docker-compose pull && docker-compose up --force-recreate --build -d"
-#
+alias "docker-compose-update"="docker compose pull && docker compose up --force-recreate --build -d"
+# Trying out NeoVim
+alias "vim"="nvim"
+alias "vi"="nvim"
+alias "vimlog"="nvim -V9myVim.log"
+alias "vimdiff"="nvim -d"
+alias "vun"="nvim"
+alias "bim"="nvim"
 # autocorrect
-alias "vm"="mv"
 alias "cd.."="cd .."
-alias "vun"="vim"
-alias "bim"="vim"
+alias "vm"="mv"
+#
 ######
 case "$OSTYPE" in
   darwin*)
     ## macOS specific aliases
     alias "tg"="terragrunt"
+    alias "pbc"="pbcopy"
     alias "python"="python3"
     alias "lsblk"="diskutil list";
     alias "ssh-add -k"="ssh-add-key"
@@ -96,6 +99,3 @@ case "$OSTYPE" in
     alias "wnet"="watch -n .1 -c 'netstat -tulpna'"
   ;;
 esac
-########
-#eval "$(gh copilot alias -- zsh)"
-alias "tfmops"="AWS_PROFILE='AWS_cspm-ops-prod'"

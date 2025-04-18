@@ -22,6 +22,6 @@ function tf_log() {
     export TF_LOG_CORE="$log_level"
     export TF_LOG_PROVIDER="$log_level"
     export TF_LOG_PATH="$log_file"
-
-    echo "Terraform log level set to $loglevel. Log file: $log_file"
+    touch $log_file
+    echo "Terraform log level set to $log_level. Log file: $log_file"
 }
