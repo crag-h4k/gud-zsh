@@ -38,6 +38,9 @@ alias "grepp"="grep  --color=always -rnwe"
 alias "ta"="tmux attach"
 alias "tl"="tmux list-sessions"
 alias "teelog"="2>&1 | tee"
+alias "tws"="terraform workspace select"
+alias "twl"="terraform workspace list"
+alias "tfmt"="terraform format"
 # Docker
 # Stop all containers:
 alias "docker_stopall"="docker stop $(docker ps -aq)"

@@ -3,12 +3,12 @@
 ZSH_DISABLE_COMPFIX=true
 ZSH_THEME="gud"
 # check for private variable file, create one if it doesn't exist
-if [[ ! -a $HOME/.zsh-private ]]; then
-    echo "Creating a private file at $HOME/.zsh-private";
-    echo "# Put private alias or env variables in this file.\n" > $HOME/.zsh-private;
+if [[ ! -a $HOME/.zsh_private ]]; then
+    echo "Creating a private file at $HOME/.zsh_private";
+    echo "# Put private alias or env variables in this file.\n" > $HOME/.zsh_private;
 fi
 #
-source $HOME/.zsh-private
+source $HOME/.zsh_private
 
 # History Settings
 export HISTFILE=$HOME/.zsh_history
@@ -64,6 +64,11 @@ echo $LOCAL_IP;
 # Enable zsh history backups, see custom/functions/zhist_backup
 export ZSH_HISTORY_BACKUP_DIR=$ZSH_BASE/zsh_history_backups
 export ZSH_HISTORY_BACKUP_MAX_DAYS=30
+if [[ ! -a $ZSH_HISTORY_BACKUP_DIR ]]; then
+    echo "zsh_history_backup needs a backup directory"
+    echo "creating backup directory at '$ZSH_HISTORY_BACKUP_DIR'"
+    mkdir -p $ZSH_HISTORY_BACKUP_DIR
+fi
 zsh_history_backup &> $ZSH_HISTORY_BACKUP_DIR/zsh_history_backup.log
 
 autoload -U +X bashcompinit && bashcompinit
