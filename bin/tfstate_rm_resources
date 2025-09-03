@@ -1,0 +1,55 @@
+#!/usr/bin/env zsh
+
+# Default values
+dry_run=false
+
+# Parse command-line arguments
+while getopts ":d,h" opt; do
+  case "$opt" in
+    d)
+      dry_run=true
+      ;;
+    h)
+      echo "Usage: ./remove_resources.zsh <input_file> [-d]"
+      exit 0
+      ;;
+    \?)
+      echo "Invalid option: -$OPTARG"
+      exit 1
+      ;;
+    :)
+      echo "Option -$OPTARG requires an argument."
+      exit 1
+      ;;
+  esac
+done
+
+# Shift off the options
+shift "$((OPTIND - 1))"
+
+# Check if the input file exists
+if [[ -z "$1" ]]; then
+  echo "Error: Input file not specified."
+  exit 1
+fi
+
+if [[ ! -f "$1" ]]; then
+  echo "Error: Input file '$1' not found."
+  exit 1
+fi
+
+# Iterate through each line in the input file
+while IFS= read -r line; do
+  if $dry_run; then
+    echo "Dry run: Would remove resource: $line"
+  else
+    # Use terraform state rm to remove the resource
+    terraform state rm -name "$line"
+    # Check if the command was successful.  If not, print an error and continue.
+    if [[ $? -ne 0 ]]; then
+      echo "Error removing resource: $line"
+    fi
+  fi
+done < "$1"
+
+echo "Terraform resource removal complete."

@@ -1,0 +1,20 @@
+#!/usr/bin/env zsh
+# $file - should be a " " delimited file with.
+# Terraform object addresses as follows
+# old.tf.obj new.tf.obj
+# One pair per line
+file=$1
+total=$(wc -l < "$file" | xargs)
+
+count=0
+start_time=$SECONDS
+start_minutes=$MINUTES
+echo "$total total resources will be moved."
+while read -r old new; do
+  count=$((count + 1))
+  terraform state mv "$old" "$new"
+  elapsed_seconds=$((SECONDS - start_time))
+  elapsed_minutes=$((elapsed_seconds / 60))
+  percent=$((count * 100 / total))
+  echo -e "\e[31m$count\e[0m/$total ($percent%) — ${elapsed_minutes}min ${elapsed_seconds}sec elapsed..."
+done < $file

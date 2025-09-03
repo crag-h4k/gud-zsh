@@ -6,7 +6,7 @@
 # update without a prompt
 #
 MODELS=( $(ollama list | awk 'NR>1 {print $1}') )
-echo "Will update the following MODELS:"
+echo "\n\033[33mWill update the following $MODELS:\033[0m"
 for MODEL in "${MODELS[@]}"; do
         echo "\033[94m${MODEL}\033[0m"
 done
@@ -24,9 +24,10 @@ else
     fi
 fi
 
-echo "\nUpdating..."
+echo "\n\033[33mUpdating:\033[0m \033[94m${MODELS}\033[0m"
 for MODEL in "${MODELS[@]}"; do
-        #echo "Updating $MODEL"
-        echo "\nUpdating \033[94m${MODEL}\033[0m"
-        ollama pull "$MODEL"
+    eval "ollama pull $MODEL" &
 done
+wait
+
+echo "\n\033[33mAll Done!\033[0m"
