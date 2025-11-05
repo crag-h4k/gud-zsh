@@ -14,6 +14,8 @@ export PATH=$MAX_PATH/bin:$PATH
 export LANG="en_US.UTF-8"
 export GPG_TTY=$(tty)
 #
+#
+export TERM=xterm-256color
 export UPDATE_ZSH_DAYS=7
 export HISTTIMEFORMAT="%d-%b-%y %*"
 export LOCAL_IP="$(/sbin/ifconfig -a | grep -E 'inet.*netmask' | grep -v '127.0.0.1' | awk '{print $2}')";
