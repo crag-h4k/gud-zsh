@@ -38,7 +38,7 @@ autoload zmv
 
 source $ZSH_BASE/aliases
 
-for function in $ZSH_CUSTOM/functions/*; do
+for function in $ZSH_CUSTOM/functions/*.zsh; do
       source $function
   done
 
@@ -47,8 +47,6 @@ plugins=(
     brew
     colored-man-pages
     colorize
-    docker
-    docker-compose
     gpg-agent
     git
     macos
@@ -58,6 +56,10 @@ plugins=(
     zsh-syntax-highlighting
     zsh-completions
 )
+
+if command -v docker &>/dev/null; then
+    plugins+=(docker docker-compose)
+fi
 #
 source $ZSH/oh-my-zsh.sh
 echo $LOCAL_IP;
