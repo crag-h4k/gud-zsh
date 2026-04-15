@@ -25,7 +25,6 @@ case "$OSTYPE" in
     darwin*)
         export PATH=$HOME/.vpn:$PATH
         export PATH=$HOME/.private_bin:$PATH
-        export PATH=$HOME/.cargo/bin:$PATH
         export OLLAMA_ORIGINS="app://obsidian.md*"
         # export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
         # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"

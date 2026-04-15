@@ -16,6 +16,7 @@ alias "gitmours"="git merge --strategy=ours"
 alias "gitsup"="git submodule update --remote --init --recursive"
 alias "gitrs"="git restore"
 alias "gitrename"="git branch -m"
+alias "gitparent"="git show-branch -a | grep '*' | grep -v '\$(git rev-parse --abbrev-ref HEAD)' | head -n1 | sed 's/.*\[\(.*\)\].*/\1/' | sed 's/[\^~].*//'"
 # shortcuts
 # Python3
 alias "tinit"="touch __init__.py"
@@ -26,7 +27,7 @@ alias "flake8"="flake8 --append-config ~/.vim/.flake8"
 alias "sourcez"="source ~/.zshrc"
 alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
-alias "most recent"="ls -ltrRh"
+alias "recent_f_changes"="ls -ltrRh"
 alias "watch"="watch -n .1 -c"
 alias "meow"="highlight"
 alias "xhist"="echo '' > ~/.zsh_history & exec $SHELL -l"
@@ -36,19 +37,19 @@ alias "dt"="date +%d-%b-%Y_%H.%M"
 alias "gp"="ping google.com"
 alias "grep"="grep --color=always"
 alias "grepp"="grep  --color=always -rnwe"
-alias "ta"="tmux attach"
-alias "tl"="tmux list-sessions"
 alias "teelog"="2>&1 | tee"
 alias "tws"="terraform workspace select"
 alias "twl"="terraform workspace list"
-# Docker
-# Stop all containers:
-alias "docker_stopall"="docker stop $(docker ps -aq)"
-# Remove all containers
-alias "docker_rmf"="docker rm $(docker ps -aq)"
-# Remove all images
-alias "docker_rmif"="docker rmi $(docker images -q)"
-alias "docker-compose-update"="docker compose pull && docker compose up --force-recreate --build -d"
+# Docker - only define if docker is available
+if command -v docker &>/dev/null; then
+  # Stop all containers:
+  alias "docker_stopall"="docker stop \$(docker ps -aq)"
+  # Remove all containers
+  alias "docker_rmf"="docker rm \$(docker ps -aq)"
+  # Remove all images
+  alias "docker_rmif"="docker rmi \$(docker images -q)"
+  alias "docker-compose-update"="docker compose pull && docker compose up --force-recreate --build -d"
+fi
 # Trying out NeoVim
 alias "vim"="nvim"
 alias "vi"="nvim"
@@ -56,7 +57,6 @@ alias "vimlog"="nvim -V9myVim.log"
 alias "vimdiff"="nvim -d"
 alias "vun"="nvim"
 alias "bim"="nvim"
-# autocorrect
 # Trying out NeoVim
 #alias "vim"="vim"
 #alias "vi"="vim"
@@ -67,6 +67,7 @@ alias "bim"="nvim"
 # autocorrect
 alias "cd.."="cd .."
 alias "vm"="mv"
+alias "calude"="claude"
 #
 ######
 case "$OSTYPE" in
@@ -76,7 +77,7 @@ case "$OSTYPE" in
     alias "pbc"="pbcopy"
     alias "python"="python3"
     alias "lsblk"="diskutil list";
-    alias "ssh-add -k"="ssh-add-key"
+    alias "ssh-add-key"="ssh-add -k"
     alias "ssh-keychain-add"="ssh-add -k"
     alias "incog"="open -a /Applications/Google\ Chrome\ Canary.app --args --incognito"
     alias "brewski"="brew update && brew upgrade && brew cleanup; brew doctor"

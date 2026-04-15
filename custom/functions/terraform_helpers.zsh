@@ -55,3 +55,19 @@ function tfstatepull() {
         exit 1
     fi
 }
+
+function tfshowdel(){
+    #local tfplanfile="tfplan"
+    local tfplanfile=$1
+    #if [ $# -gt 0 ]; then
+    #    tfstatefile=$1
+    #fi
+    if [ ! -f "$tfplanfile" ]; then
+        echo "Error: Terraform plan file \'$tfplanfile\' does not exist."
+        echo "You need to generate a local .tfplan file."
+        exit 1
+    fi
+    planned_deleted_resources="$(terraform show -json $tfplanfile | jq -r '.resource_changes[] | select(.change.actions | contains(["delete"])) | .address'\n)"
+    echo "Resources planned to be deleted:"
+    echo "$planned_deleted_resources"
+}
