@@ -13,18 +13,20 @@ export PATH=$MAX_PATH/bin:$PATH
 
 export LANG="en_US.UTF-8"
 export GPG_TTY=$(tty)
-#
-#
 export TERM=xterm-256color
 export UPDATE_ZSH_DAYS=7
 export HISTTIMEFORMAT="%d-%b-%y %*"
-export LOCAL_IP="$(/sbin/ifconfig -a | grep -E 'inet.*netmask' | grep -v '127.0.0.1' | awk '{print $2}')";
 export ARCH="$(arch)"
 #
 case "$OSTYPE" in
     darwin*)
         export PATH=$HOME/.vpn:$PATH
-        export PATH=$HOME/.private_bin:$PATH
+        export HOMEBREW_PREFIX=/opt/homebrew
+        export HOMEBREW_CELLAR=/opt/homebrew/Cellar
+        export HOMEBREW_REPOSITORY=/opt/homebrew
+        export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
+        export MANPATH=/opt/homebrew/share/man${MANPATH+:$MANPATH}:
+        export INFOPATH=/opt/homebrew/share/info:${INFOPATH:-}
         export OLLAMA_ORIGINS="app://obsidian.md*"
         # export PATH=/opt/homebrew/opt/openjdk/bin:$PATH
         # export CPPFLAGS="-I/opt/homebrew/opt/openjdk/include"
@@ -40,7 +42,6 @@ case "$OSTYPE" in
                 export PATH=/usr/local/opt/llvm/bin:$PATH
                 ;;
         esac
-        eval $(/opt/homebrew/bin/brew shellenv)
         ;;
     linux*)
         export CONDA_PATH=/opt/miniconda3

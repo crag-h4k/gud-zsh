@@ -1,0 +1,29 @@
+#!/usr/bin/env zsh
+# One-shot dotfile installer. Clones gud-{zsh,vim,tmux} into ~/.{zsh,vim,tmux}
+# if missing, then runs `make install` in each.
+#
+# Safe to re-run: clone is skipped when the target exists; make install is
+# idempotent.
+
+set -euo pipefail
+
+GH_OWNER=${GH_OWNER:-crag-h4k}
+
+for name in zsh vim tmux; do
+  repo="gud-$name"
+  target="$HOME/.$name"
+  if [[ ! -d "$target" ]]; then
+    echo "==> cloning $GH_OWNER/$repo into $target"
+    git clone --recursive "git@github.com:$GH_OWNER/$repo" "$target"
+  else
+    echo "==> $target already present, skipping clone"
+  fi
+  if [[ -f "$target/Makefile" ]]; then
+    make -C "$target" install
+  else
+    echo "!! $target has no Makefile; skipping link step"
+  fi
+done
+
+echo
+echo "Done. Open a new shell or run 'exec zsh -l'."

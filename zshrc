@@ -12,8 +12,8 @@ source $HOME/.zsh_private
 
 # History Settings
 export HISTFILE=$HOME/.zsh_history
-export HISTSIZE=256000000          # the number of items for the internal history list
-export SAVESIZE=256000000          # maximum number of items for the history file
+export HISTSIZE=256000             # the number of items for the internal history list
+export SAVESIZE=256000             # maximum number of items for the history file
 # No beeps!
 unsetopt LIST_BEEP
 unsetopt HIST_BEEP
@@ -44,42 +44,48 @@ for function in $ZSH_CUSTOM/functions/*.zsh; do
 
 plugins=(
     aws
-    brew
     colored-man-pages
     colorize
+    command-not-found
+    fzf
     gpg-agent
+    gh
     git
-    macos
-    ssh-agent
+    jsontools
     terraform
+    tmux
+    zoxide
+    zsh-completions
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-completions
 )
 
 if command -v docker &>/dev/null; then
     plugins+=(docker docker-compose)
 fi
-#
-source $ZSH/oh-my-zsh.sh
-echo $LOCAL_IP;
-# Enable zsh history backups, see custom/functions/zhist_backup
-export ZSH_HISTORY_BACKUP_DIR=$ZSH_BASE/zsh_history_backups
-export ZSH_HISTORY_BACKUP_MAX_DAYS=30
-if [[ ! -a $ZSH_HISTORY_BACKUP_DIR ]]; then
-    echo "zsh_history_backup needs a backup directory"
-    echo "creating backup directory at '$ZSH_HISTORY_BACKUP_DIR'"
-    mkdir -p $ZSH_HISTORY_BACKUP_DIR
-fi
-zsh_history_backup &> $ZSH_HISTORY_BACKUP_DIR/zsh_history_backup.log
 
-autoload -U +X bashcompinit && bashcompinit
 case "$OSTYPE" in
   darwin*)
     test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh";
-    complete -o nospace -C /opt/homebrew/bin/terragrunt terragrunt
+    # Don't need this
+    # complete -o nospace -C /opt/homebrew/bin/terragrunt terragrunt
+    plugins+=(macos brew)
   ;;
   linux*)
+    plugins+=(ssh-agent)
     ssh-add -A >/dev/null 2>&1;
   ;;
 esac
+#
+source $ZSH/oh-my-zsh.sh
+
+# Login-shell banner: current primary LAN IP (fresh per shell) +
+# public WAN IP (cached, see MYWANIP_TTL in custom/functions/mywanip.zsh).
+[[ -o login ]] && print -P "%F{cyan}LAN:%f $(myip)   %F{cyan}WAN:%f $(mywanip)"
+
+# Enable zsh history backups, see custom/functions/zsh_history_backup.zsh
+export ZSH_HISTORY_BACKUP_DIR=$ZSH_BASE/zsh_history_backups
+export ZSH_HISTORY_BACKUP_MIN_HOURS=6
+zsh_history_backup
+
+autoload -U +X bashcompinit && bashcompinit
