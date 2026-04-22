@@ -9,6 +9,7 @@ wrapped so you can land on a new machine with one command.
   - [Prereqs](#prereqs)
   - [One-shot bootstrap (new machine)](#one-shot-bootstrap-new-machine)
   - [Manual install](#manual-install)
+- [Packages](#packages)
 - [Symlink management](#symlink-management)
 - [Plugins](#plugins)
 - [Custom functions](#custom-functions)
@@ -57,6 +58,19 @@ sudo chsh -s "$(command -v zsh)"
 ```
 
 Then open a new terminal or `exec zsh -l`.
+
+## Packages
+
+Install the system packages the shell + plugins expect (zsh, git, make, curl,
+fzf, gh, zoxide, gnupg):
+
+```sh
+make packages
+```
+
+macOS uses Homebrew (install separately if missing). Debian/Ubuntu uses `apt`
+and needs sudo. Safe to re-run: package managers skip anything already
+installed. See `scripts/install-packages.sh` for the exact list.
 
 ## Symlink management
 

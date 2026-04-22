@@ -38,10 +38,6 @@ autoload zmv
 
 source $ZSH_BASE/aliases
 
-for function in $ZSH_CUSTOM/functions/*.zsh; do
-      source $function
-  done
-
 plugins=(
     aws
     colored-man-pages
@@ -78,6 +74,12 @@ case "$OSTYPE" in
 esac
 #
 source $ZSH/oh-my-zsh.sh
+
+# Custom functions AFTER OMZ so our definitions override any plugin-provided
+# ones (e.g. workflow_helpers.zsh `ta` beats tmux plugin's `ta`).
+for function in $ZSH_CUSTOM/functions/*.zsh; do
+    source $function
+done
 
 # Login-shell banner: current primary LAN IP (fresh per shell) +
 # public WAN IP (cached, see MYWANIP_TTL in custom/functions/mywanip.zsh).

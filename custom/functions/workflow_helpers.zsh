@@ -1,3 +1,8 @@
+# OMZ's tmux plugin defines `tl` as an alias (`tmux list-sessions`), which
+# blocks a function of the same name from being defined. Drop it so our
+# richer `tl` can be installed.
+unalias tl 2>/dev/null
+
 # Prompts the user to confirm creating a new tmux session.
 # Returns 0 if confirmed, 1 if declined.
 _tmux_confirm_create() {
@@ -25,10 +30,13 @@ ta() {
 }
 
 # List all tmux sessions with the active command in each.
+# Mirrors `ta` when no session exists: prompts to create one.
 tl() {
-  tmux list-windows -a -F "#{session_name} (#{session_windows}w) [#{window_name}] — #{pane_current_command}" 2>/dev/null | sort -u || {
+  if ! tmux has-session 2>/dev/null; then
     echo "No sessions. The void stares back."
     _tmux_confirm_create "Create one?" || return 1
     tmux new-session
-  }
+    return
+  fi
+  tmux list-windows -a -F "#{session_name} (#{session_windows}w) [#{window_name}]: #{pane_current_command}" | sort -u
 }
