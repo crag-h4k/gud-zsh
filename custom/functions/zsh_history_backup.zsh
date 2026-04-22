@@ -1,45 +1,33 @@
 #!/usr/bin/env zsh
-# Backup zsh history file everytime a new shell is opened.
-# Optional cleanup - remove old backups after a certain number of days (if ZSH_HISTORY_BACKUP_MAX_DAYS is set)
+# Back up $HISTFILE, but only if the newest existing backup is older than
+# ZSH_HISTORY_BACKUP_MIN_HOURS (default 6). No deletions.
+#
+# Env:
+#   ZSH_HISTORY_BACKUP_DIR       where backups live (default: ~/.zsh/zsh_history_backups)
+#   ZSH_HISTORY_BACKUP_MIN_HOURS minimum gap between backups (default: 6)
 function zsh_history_backup() {
-    local backup_dir=${1:-"$ZSH_HISTORY_BACKUP_DIR"}
-    # Check if $ZHIST_BACK is set, otherwise use a default path.
-    if [ -z "$ZSH_HISTORY_BACKUP_DIR" ]; then
-        backup_dir="$HOME/.zsh/zsh_history_backups"
-        echo "\$ZSH_HISTORY_BACKUP_DIR not set."
-        echo "\$ZSH_HISTORY_BACKUP_DIR set to $backup_dir"
+    local backup_dir="${ZSH_HISTORY_BACKUP_DIR:-$HOME/.zsh/zsh_history_backups}"
+    local min_hours=${ZSH_HISTORY_BACKUP_MIN_HOURS:-6}
+    local min_secs=$(( min_hours * 3600 ))
 
-    fi
-    # Validate and set the output directory.
-    #if [ ! -d "$backup_dir" ]; then
-    if [ ! -e "$backup_dir" ]; then
-        echo "zsh backup directory doesn't exist, creating $backup_dir"
-        mkdir -p $backup_dir
+    [[ -r "$HISTFILE" ]] || return 0
+    mkdir -p "$backup_dir"
+
+    # Newest existing backup (by mtime, survives clock skew).
+    local newest
+    newest=$(command ls -t "$backup_dir"/zsh_history_backup_* 2>/dev/null | head -1)
+
+    if [[ -n "$newest" && -f "$newest" ]]; then
+        local now last
+        now=$(date +%s)
+        # stat is BSD on macOS (-f %m), GNU on Linux (-c %Y).
+        last=$(stat -f %m "$newest" 2>/dev/null || stat -c %Y "$newest" 2>/dev/null)
+        if [[ -n "$last" ]] && (( now - last < min_secs )); then
+            return 0
+        fi
     fi
 
-    local timestamp=$(date +%Y-%m-%d-%H%M)
-    local hist_file="$HISTFILE"
-    local hist_backup_file="$backup_dir/zsh_history_backup_$timestamp"
-
-    # Perform the actual backup. Handle errors to prevent partial failure.
-    cp $hist_file $hist_backup_file
-    local cp_result=$?
-    if [ $cp_result -eq 0 ]; then
-        echo "Backup created: $hist_backup_file"
-    else
-        echo "Error creating backup: $cp_result"
-    fi
-    # Remove old backups
-    if [ -n "$ZSH_HISTORY_BACKUP_MAX_DAYS" ] && [[ $ZSH_HISTORY_BACKUP_MAX_DAYS =~ ^[0-9]+$ ]]; then
-        local max_backups=$(( ${ZSH_HISTORY_BACKUP_MAX_DAYS} * 86400 ))
-        for file in "$backup_dir/zsh_history-*"; do
-            if [ -f "$file" ]; then
-                local file_date=$(date +"%s")
-                if [ $(($file_date)) -lt $max_backups ]; then
-                    rm "$file"
-                    echo "Removed old backup: $file"
-                fi
-            fi
-        done
-    fi
+    local ts
+    ts=$(date +%Y-%m-%d-%H%M)
+    cp -p "$HISTFILE" "$backup_dir/zsh_history_backup_${ts}"
 }

@@ -1,103 +1,128 @@
 # gud zsh
 
-This is a pretty good zsh setup.
+A pretty good zsh setup: oh-my-zsh + custom theme + hand-picked plugins,
+wrapped so you can land on a new machine with one command.
 
-## Installation and Getting Started
+## Table of Contents
 
-Make sure vanilla zsh is already installed via system package manager.
+- [Install](#install)
+  - [Prereqs](#prereqs)
+  - [One-shot bootstrap (new machine)](#one-shot-bootstrap-new-machine)
+  - [Manual install](#manual-install)
+- [Symlink management](#symlink-management)
+- [Plugins](#plugins)
+- [Custom functions](#custom-functions)
+  - [`zsh_history_backup`](#zsh_history_backup)
+  - [`tf_log`](#tf_log)
+- [Extras](#extras)
+  - [`git boom` (fuzzy branch delete)](#git-boom-fuzzy-branch-delete)
 
-### Debian GNU/Linux
+## Install
 
-```sh
-sudo apt install zsh -y
-```
+### Prereqs
 
-### macOS
-
-If you don't have `homebrew` already installed, do it will the following command
-
-```sh
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-```
-
-Then install `zsh` via `brew`
-
-```sh
-brew install zsh zsh-completions zsh-lovers
-```
-
-Install the *gud* zsh stuff
+Debian / Ubuntu:
 
 ```sh
-# back stuff up
-BAK=$HOME/.zsh-$(date +%d-%b-%Y).bak
-mkdir $BAK
-mv $HOME/.zsh* $BAK/.
-git clone https://github.com/crag-h4k/gud-zsh.git $HOME/.zsh --recursive
-ln -s $HOME/.zsh/zshrc ~/.zshrc
-ln -s $HOME/.zsh/zshenv ~/.zshenv
-sudo chsh -s $(which zsh)
+sudo apt install -y zsh git make
 ```
 
-Then spawn a new shell by opening a new terminal session or by typing...
+macOS:
 
 ```sh
-zsh
+# Homebrew (if missing)
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew install zsh zsh-completions zoxide fzf gh
 ```
 
-#### MacOS, update ruby
+### One-shot bootstrap (new machine)
 
-MacOS has a heinously out of date version of ruby. Install newer releases via
-the commands below.
+Pull this repo, then run the bootstrap script. It clones all three dotfile
+repos (`gud-zsh`, `gud-vim`, `gud-tmux`) and symlinks everything:
 
-```zsh
-brew install chruby ruby-install
-ruby-install ruby
+```sh
+git clone --recursive https://github.com/crag-h4k/gud-zsh.git "$HOME/.zsh"
+"$HOME/.zsh/bin/bootstrap"
+sudo chsh -s "$(command -v zsh)"
 ```
 
-## Custom Functions and Scripts
+### Manual install
 
-### `tf_log`
+If you only want the zsh repo:
 
-This function sets terraform logging environment variables such that a log file
-is created in the current directory with the current date and time as the filename
-and sets the log level to `DEBUG`.
+```sh
+git clone --recursive https://github.com/crag-h4k/gud-zsh.git "$HOME/.zsh"
+make -C "$HOME/.zsh" install
+sudo chsh -s "$(command -v zsh)"
+```
+
+Then open a new terminal or `exec zsh -l`.
+
+## Symlink management
+
+The repo ships a `Makefile` that manages all symlinks into `$HOME`:
+
+```sh
+make install     # idempotent: links ~/.zshrc and ~/.zshenv into this repo
+make uninstall   # removes the managed symlinks
+make relink      # uninstall + install
+make check       # report status of each managed link
+```
+
+`make install` refuses to clobber real files: if `~/.zshrc` exists and is not
+a symlink, it is left alone and the run skips that entry.
+
+## Plugins
+
+Current OMZ plugin list (see `zshrc`):
+
+```text
+aws, colored-man-pages, colorize, command-not-found, fzf, gpg-agent, gh,
+git, jsontools, terraform, tmux, zoxide, zsh-completions,
+zsh-autosuggestions, zsh-syntax-highlighting
+```
+
+Platform-specific additions:
+
+- macOS: `macos`, `brew`
+- Linux: `ssh-agent`
+
+Conditionally loaded if `docker` is on `$PATH`: `docker`, `docker-compose`.
+
+## Custom functions
+
+Defined under `custom/functions/*.zsh` and auto-loaded from `zshrc`.
 
 ### `zsh_history_backup`
 
-For `zsh_history_backup` - you can add these to your `~/.zshrc` for backing up
-every time your spawn a shell and delete backups older than 30 days:
+Copies `$HISTFILE` to `$ZSH_HISTORY_BACKUP_DIR` on interactive shell startup,
+but only if the newest existing backup is older than
+`ZSH_HISTORY_BACKUP_MIN_HOURS` (default 6). No files are ever deleted.
+
+Defaults are wired in `zshrc`:
 
 ```zsh
-# Enable zsh history backups, see custom/functions/zhist_backup
 export ZSH_HISTORY_BACKUP_DIR=$ZSH_BASE/zsh_history_backups
-export ZSH_HISTORY_BACKUP_MAX_DAYS=30
-zsh_history_backup &> $ZSH_HISTORY_BACKUP_DIR/zsh_history_backup.log
+export ZSH_HISTORY_BACKUP_MIN_HOURS=6
+zsh_history_backup
 ```
 
-### `git boom`
+Override either variable in `~/.zsh_private` to change behavior per machine.
 
-Credit to [@dteoh](https://github.com/dteoh/dotfiles/blob/master/git/commands/git-boom) for `git boom`.
+### `tf_log`
 
-# Delete multiple Git branches with a UI
+Sets Terraform logging env vars so the next `terraform` run writes a
+timestamped debug log into the current directory.
 
-This assumes you have installed [fzf](https://github.com/junegunn/fzf).
+## Extras
 
+### `git boom` (fuzzy branch delete)
+
+Requires [fzf](https://github.com/junegunn/fzf):
+
+```sh
+git branch --no-color | fzf -m | xargs -I {} git branch -D '{}'
 ```
-$ git branch --no-color | fzf -m | xargs -I {} git branch -D '{}'
-```
 
-Press `tab` to mark a branch, `shift-tab` to unmark. Press `enter` and all marked branches will be deleted.
-
-## Add custom subcommand
-
-You can add custom subcommands to git. Here's how I added the above script as `git boom`.
-
-1. Create a file named `git-boom`. This file should be located inside of a directory in `$PATH` (either make a new directory and add it to $PATH, or use an existing location).
-2. Add the script contents. Example from [my git-boom file][2].
-3. Make the file executable. `chmod +x ./git-boom`
-4. Now you can run `git boom`
-
-
-[1]: https://github.com/junegunn/fzf
-[2]: https://github.com/dteoh/dotfiles/blob/master/git/commands/git-boom
+`tab` to mark, `shift-tab` to unmark, `enter` to delete. Credit to
+[@dteoh](https://github.com/dteoh/dotfiles/blob/master/git/commands/git-boom).

@@ -25,7 +25,6 @@ alias "tvenv"='source $(pwd)/tests/venv/bin/activate'
 alias "newvenv"="rm -rf venv && python3 -m venv venv"
 alias "flake8"="flake8 --append-config ~/.vim/.flake8"
 alias "sourcez"="source ~/.zshrc"
-alias "myip"="echo $LOCAL_IP"
 alias "du"="du -h"
 alias "recent_f_changes"="ls -ltrRh"
 alias "watch"="watch -n .1 -c"
